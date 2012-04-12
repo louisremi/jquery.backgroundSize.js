@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jquery.backgroundSize.js</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="main" role="main">
+	<h1>jquery.<br/><em>backgroundSize</em> . js</h1>
+
+	<div id="sc1" class="scales">
+		<h2>Introduction</h2>
+		<p>
+			<code>background-size: cover;</code> scales an image to <strong>cover</strong> entirely the background of a target element <small>(the body of this page is styled this way)</small>.
+		</p>
+		<p>
+			<code>background-size: contain;</code> scales an image to make it as big as possible but always entirely visible (or <strong>contained</strong>) in the background of a target element <small>(this box is styled this way)</small>.
+		</p>
+		<p>
+			<code>background-size</code> is available in IE9+, Firefox, Chrome, Safari and Opera.
+			Unfortunately, progressive enhancement doesn't work very well here: IE6-7-8 users would see a broken website.
+		</p>
+		<p>
+			<strong>jquery.backgroundSize.js</strong> is a 1.5k jQuery plugin that provides a fallback for those browsers:
+			<br/><code>$(elem).css({backgroundSize: "cover"});</code>
+			<br/><code>$(elem).css({backgroundSize: "contain"});</code>
+		</p>
+	</div>
+	<div id="sc2" class="scales">
+		<h2>Demonstration</h2>
+		<p>
+			Resize your browser to see how the background images are affected on this page.
+		</p>
+		<p>
+			<label for="bgsEnabled"><input id="bgsEnabled" type="checkbox"/>&nbsp;&nbsp;Check what IE6-7-8 users would see without this plugin.</label>
+		</p>
+		<p>
+			<label><input id="bgsValue" type="checkbox"/>&nbsp;&nbsp;Switch "cover" to "contain" and <i>vice versa</i>.</label>
+		</p>
+		<p>
+			<label><input id="bgsImage" type="checkbox"/>&nbsp;&nbsp;Change the background image of the body.</label>
+		</p>
+		<p>
+			<label><input id="bgsAnim" type="checkbox"/>&nbsp;&nbsp;Animate the size of this box.</label>
+		</p>
+		<p>
+			NB: this page shows emulated <code>background-size</code> to all browsers but it's possible to use CSS first, then load &amp; use this library in conditionnal comments.
+		</p>
+	</div>
+</div>
+
+<a id="github" href="https://github.com/louisremi/jquery.backgroundSize.js">Fork me on Github</a>
+
+<a id="twitter" href="http://twitter.com/louis_remi">by @louis_remi</a>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">$.debugBGS = true;</script>
+<script src="../jquery.backgroundSize.js" type="text/javascript"></script>
+<script src="http://louisremi.github.com/jquery.transform.js/jquery.transform2d.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(function() {
+
+$(document.body).css({backgroundSize: "cover"});
+$(".scales").css({backgroundSize: "contain"});
+
+$("#github").css({ transform: "translate(-50px,65px) rotate(-45deg)" });
+$("#twitter").css({ transform: "translate(20px,-50px) rotate(-90deg)" });
+
+});
+
+$("#bgsEnabled").click(function() {
+	$("body, .scales").each(function(i,el) {
+		if ( $("#bgsEnabled").attr("checked") ) {
+			var $el = $(el),
+				$img = $el.find("img:first"),
+				$wrapper = $el.find("div:first");
+
+			el.style.backgroundImage = "url("+ $img[0].src +")";
+			$wrapper.css({ display: "none" });
+
+		} else {
+			$("body, .scales").each(function(i,el) {
+				el.style.backgroundImage = "none";
+				$(el).find("div:first").css({ display: "block" });
+			});
+		}
+	});
+}).prop("checked", false);
+
+
+
+$("#bgsValue").click(function() {
+	if ( $("#bgsValue").attr("checked") ) {
+		$(document.body).css({backgroundSize: "contain"});
+		$(".scales").css({backgroundSize: "cover"});
+
+	} else {
+		$(document.body).css({backgroundSize: "cover"});
+		$(".scales").css({backgroundSize: "contain"});
+	}
+}).prop("checked", false);
+
+$("#bgsImage").click(function() {
+	if ( $("#bgsImage").attr("checked") ) {
+		$(document.body).css({backgroundImage: "url("+ "images/propylaea_LD.jpg" +")"});
+
+	} else {
+		$(document.body).css({backgroundImage: "url("+ "images/parthenon_LD.jpg" +")"});
+	}
+}).prop("checked", false);
+
+$("#bgsAnim").click(function() {
+	if ( $("#bgsAnim").attr("checked") ) {
+		$("#sc2").stop( false, true ).animate({ height: 300 }, {
+			step: function() {
+				$.refreshBackgroundDimensions( this );
+				$.refreshBackgroundDimensions( document.body );
+			}
+		});
+
+	} else {
+		$("#sc2").stop( false, true ).animate({ height: 400 }, {
+			step: function() {
+				$.refreshBackgroundDimensions( this );
+				$.refreshBackgroundDimensions( document.body );
+			}
+		});
+	}
+}).prop("checked", false);
+
+</script>
+
+</body>
+</html>
