@@ -6,7 +6,7 @@ A jQuery cssHook adding support for "cover" and "contain" to IE6-7-8, in 1.5K
 Introduction
 ------------
 
-[Demo](http://louisremi.github.com/jquery.backgroundSize.js)
+[Demo](http://louisremi.github.com/jquery.backgroundSize.js/demo/)
 
 **Progressive Enhancement** is the mantra I live by. It means *"Have fun with CSS3 and don't worry about IE6-7-8 users; they'll never notice they're missing out on your gorgeous text-shadows and gradients, anyway"*.
 
@@ -31,23 +31,23 @@ In browsers that don't implement it natively, an `<img/>` will be inserted in th
 Limitations
 -----------
 
-Calculating the displayed position and size of the background-image of an element is quite complex and function of numerous parameters:
-- the size of the element itself
-- the size of the image
+Calculating the displayed position and size of the background-image of an element is quite complex and function of numerous parameters:  
+- the size of the element itself  
+- the size of the image  
 - the values of background-[size/position/clip/origin/attachment/scroll]
 
-It is thus impossible to emulate `background-size` completely and perfectly. But it's still possible to enjoy the main features:
-- correct position and size of the background image
-- updated position and size on browser resize
+It is thus impossible to emulate `background-size` completely and perfectly. But it's still possible to enjoy the main features:  
+- correct position and size of the background image  
+- updated position and size on browser resize  
 - updated image, position and size when the background-image is modified using `$(elem).css("background-image", "differentImage.jpg");`
 
-The following style properties, values or behavior aren't supported:
-- values other than `cover` or `contain` in `background-size`
-- multiple backgrounds (although the :after trick can still be used)
-- 4 values syntax of `background-position`
-- lengths (px, em, etc.) in `background-position` (only percentages and keywords such as `center` work)
-- any `repeat` value in `background-repeat`
-- non-default values of background-[clip/origin/attachment/scroll]
+The following style properties, values or behavior aren't supported:  
+- values other than `cover` or `contain` in `background-size`  
+- multiple backgrounds (although the :after trick can still be used)  
+- 4 values syntax of `background-position`  
+- lengths (px, em, etc.) in `background-position` (only percentages and keywords such as `center` work)  
+- any `repeat` value in `background-repeat`  
+- non-default values of background-[clip/origin/attachment/scroll]  
 - updated image size when the size of the element is modified
 
 Development vs. Production
