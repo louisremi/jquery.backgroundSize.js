@@ -232,6 +232,11 @@ body {
   overflow-y: scroll;
 }
 
+a, a:hover, a:visited {
+  color: inherit;
+  font-weight: bold;
+}
+
 body, .scales {
   background-position: center center;
   background-repeat: no-repeat;
