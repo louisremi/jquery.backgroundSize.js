@@ -50,6 +50,8 @@ The following style properties, values or behavior aren't supported:
 - non-default values of background-[clip/origin/attachment/scroll]  
 - updated image size when the size of the element is modified
 
+Removing any of these limitations is probably just one fork away...
+
 Development vs. Production
 --------------------------
 
@@ -60,7 +62,8 @@ In some cases this could potentially alter the layout of your page in IE6-7-8.
 To help you spot problems earlier, you can use a flag that will turn ON emulation of `background-size` in all browsers:
 
 ```html
-<script>$.debugBGS = true; // this should be activated BEFORE loading the plugin</script>
+<!-- The flag should be inserted before loading the script -->
+<script>$.debugBGS = true;</script>
 <script src="/path/to/jquery.backgroundSize.js"></script>
 ```
 
