@@ -108,6 +108,8 @@ $.cssHooks.backgroundImage = {
 		// if the element has a backgroundSize, refresh its background
 		if ( $.data( elem, "bgsImg") ) {
 			$.refreshBackgroundImage( elem, value );
+		} else {
+			elem.style.backgroundImage = value;
 		}
 	}
 };
