@@ -44,7 +44,13 @@ $.cssHooks.backgroundSize = {
 			pos,
 			$wrapper, $img;
 
-		$.data( elem, "bgsValue", value );
+		if (value == "") {
+			$.removeData( elem, "bgsValue");
+			watched.splice( $.inArray(elem, watched), 1 );
+			return;
+		} else {
+			$.data( elem, "bgsValue", value );
+		}
 
 		if ( firstTime ) {
 			// add this element to the 'watched' list so that it's updated on resize
