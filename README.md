@@ -1,5 +1,7 @@
-jquery.backgroundSize.js
+jquery.backgroundSize.js **DEPRECATED**
 ========================
+
+**This plugin has been deprecated**, please use its [background-size polyfill](https://github.com/louisremi/background-size-polyfill) successor.
 
 A jQuery cssHook adding support for "cover" and "contain" to IE6-7-8, in 1.5K
 
