@@ -45,8 +45,6 @@ $.cssHooks.backgroundSize = {
 			pos,
 			$wrapper, $img;
 
-		$.data( elem, "bgsValue", value );
-
 		if (value == "") {
 			$.removeData( elem, "bgsValue");
 			$.removeData( elem, "bgsImg");
