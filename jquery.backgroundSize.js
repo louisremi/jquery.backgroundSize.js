@@ -40,12 +40,20 @@ if ( "backgroundSize" in div.style && !$.debugBGS ) { return; }
 
 $.cssHooks.backgroundSize = {
 	set: function( elem, value ) {
+
 		var firstTime = !$.data( elem, "bgsImg" ),
 			pos,
 			$wrapper, $img;
 
+		$.data( elem, "bgsValue", value );
+
 		if (value == "") {
 			$.removeData( elem, "bgsValue");
+			$.removeData( elem, "bgsImg");
+			$.removeData( elem, "bgsPos");
+			$.removeData( elem, "bgsDim");
+			$.removeData( elem, "bgsImgDim");
+			$.removeData( elem, "bgsConstrain");
 			watched.splice( $.inArray(elem, watched), 1 );
 			return;
 		} else {
@@ -54,7 +62,7 @@ $.cssHooks.backgroundSize = {
 
 		if ( firstTime ) {
 			// add this element to the 'watched' list so that it's updated on resize
-			watched.push( elem );
+			watched.push( elem );			
 
 			$.refreshBackgroundDimensions( elem, true );
 
